@@ -210,10 +210,11 @@ class Node:
                     rospy.logerr("Could not stop")
                     rospy.logdebug(e)
 
+            '''
             # TODO need find solution to the OSError11 looks like sync problem with serial
             status1, enc1, crc1 = None, None, None
             status2, enc2, crc2 = None, None, None
-            '''
+            
             try:
                 status1, enc1, crc1 = roboclaw.ReadEncM1(self.address)
                 #print("enc1",enc1)
@@ -254,11 +255,8 @@ class Node:
 
         vr_ticks = int(vr * self.TICKS_PER_METER)  # ticks/s
         vl_ticks = int(vl * self.TICKS_PER_METER)
-        #vr_ticks = int(vr * 40.0)
-        #vl_ticks = int(vl * 40.0)
 
-        #rospy.logdebug("vr_ticks:%d vl_ticks: %d", vr_ticks, vl_ticks)
-        print("TICKS: %d, %d", vr_ticks, vl_ticks)
+        rospy.logdebug("vr_ticks:%d vl_ticks: %d", vr_ticks, vl_ticks)
 
         try:
             # This is a hack way to keep a poorly tuned PID from making noise at speed 0
@@ -267,7 +265,6 @@ class Node:
                 roboclaw.ForwardM2(self.address, 0)
             else:
                 roboclaw.SpeedM1M2(self.address, vr_ticks, vl_ticks)
-                print("ticks sent")
         except OSError as e:
             rospy.logwarn("SpeedM1M2 OSError: %d", e.errno)
             rospy.logdebug(e)

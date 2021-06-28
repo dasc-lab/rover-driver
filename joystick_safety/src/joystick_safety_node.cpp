@@ -21,8 +21,8 @@ class JoystickNode{
 	bool armStatus = false;
 	bool autonomousMode = false;
 
-	float LIN_V_MAX = 1.0;
-	float ANG_V_MAX = 1.0;
+	float LIN_V_MAX = -2.0;
+	float ANG_V_MAX = -4.0;
 
 	ros::Time lastArmMsg;
 
@@ -32,34 +32,59 @@ class JoystickNode{
 		
 	}
 
+	void printMode(){
+
+		if (armStatus){
+			if (autonomousMode){
+				ROS_INFO("ARMED <> AUTONOMOUS");
+				return;
+			}else{
+				ROS_INFO("ARMED <> JOYSTICK");
+				return;
+			}
+		}else{
+			if (autonomousMode){
+				ROS_INFO("NOT ARMED <> AUTONOMOUS");
+				return;
+			}else{
+				ROS_INFO("NOT ARMED <> JOYSTICK");
+			}
+		}
+
+	}
+
 	void desVelCallback(geometry_msgs::Twist msg){
 
-		if (!autonomousMode){return;}
+		if (!autonomousMode){
+			return;
+		}
 
 		if (!armStatus){
-			
 			publish(0.0, 0.0);
-
 			return;
 		}
 
 		if (!checkArmIsRecent()){
-			ROS_WARN("DID NOT RECEIVE ARMING MESSAGE FROM JOYSTICK RECENTLY!!");
+			ROS_WARN("DID NOT RECEIVE ARMING MESSAGE FROM JOYSTICK RECENTLY - DISARMING");
 			armStatus = false;
 			publish(0.0,0.0);
 		}
 
 
+		ROS_INFO("Publishing /desVel to /cmdVel");
 		publish(msg.linear.x, msg.angular.z);
 
 	}
 
 	void joyCallback(sensor_msgs::Joy msg){
-		ROS_INFO_STREAM("JOYSTICK VALUE: " << msg.axes[FORWARD_AXIS_INDEX]);
+
 
 		// save the arm status
 		armStatus = msg.buttons[ARM_BUTTON_INDEX] == 1;
-		autonomousMode  = msg.buttons[CMD_MODE_BUTTON_INDEX] == 1; // if 1, assume autonomous mode, else
+		autonomousMode  = msg.buttons[CMD_MODE_BUTTON_INDEX] == 0; // if 0, assume autonomous mode, else
+		lastArmMsg = ros::Time::now();
+
+		printMode();
 
 		// if not armed, publish 0 speed
 		if (!armStatus){
@@ -131,6 +156,8 @@ int main(int argc, char** argv){
 	ros::NodeHandle nh;
 
 	JoystickNode node(nh);
+
+	ros::spin();
 
 	return 0;
 
