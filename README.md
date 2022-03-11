@@ -24,3 +24,9 @@ Here's a good picture guide for the installation process. Steps repeated here fo
 7. Press the power button. OR in our case just connect LiPo battery to the roverclaw board which powers the Jetson too.
 
 Then follow the steps in SDK. make sure to Choose the appropriate board and Linux version in Step 1. In Step 3, I used the Force Recovery method andf followed the instructions. Instead of power button, the Jetson just starts up automatically when Lipo power is passed on through the barrel jack. Therefore, whenever it says press power button, then just connect LiPo instead.
+
+## Jetson TX2 Internet Setup
+After Ubuntu installation, simnply connect to Wifi and in its settings GUI, give permission to all users to connect to Wifi and permission to connect automatically.
+
+## Jetson TX2 ROS installation
+ROS GPG keys were changed 1.5 years ago and they released an offical notidication. However the offical installation guide never updated the instruction. So, when trying to install ROS, it shows GPG key error during `sudo apt update`, then follow the instructions at https://discourse.ros.org/t/new-gpg-keys-deployed-for-packages-ros-org/9454.
