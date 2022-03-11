@@ -48,6 +48,10 @@ export ROS_MASTER_URI=http://hardik-legion-s7.local:11311 (laptop)
 export ROS_HOSTNAME=hardik-legion-s7.local (laptop)
 ```
 
+You also need to change hostname in following two places otherwise the following error shows up: "Hostname not found. possible reason might be that the Machine is unable to communicate with itself"
+1. In file `etc/hostname`, change to rover3
+2. In file `\etc/hosts`, change the entry 127.0.1.1 xxxx to 127.0.1.1 rover3
+
 ## Additional Info
 For more info and joy stick guide, visit
 https://dev10110.github.io/tech-notes/research/setting-up-rovers.html
