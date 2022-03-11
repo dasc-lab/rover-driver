@@ -36,4 +36,16 @@ ROS GPG keys were changed 1.5 years ago and they released an offical notidicatio
 ## Required ROS packages
 After ROS installation, clone and build this repo
 
+In order to enable ROS to communicate between Laptop and Jetson, you need to set ROS IP and Hostname. Open ~/.bashrc and add following lines
+```
+export ROS_MASTER_URI=http://hardik-legion-s7.local:11311/ (laptop's name)
+export ROS_HOSTNAME=rover3.local (jetson's name)
+```
+
+Similarly on the laptop(assuming this runs tghe master in ROS), you need to add
+```
+export ROS_MASTER_URI=http://hardik-legion-s7.local:11311 (laptop)
+export ROS_HOSTNAME=hardik-legion-s7.local (laptop)
+```
+
 
