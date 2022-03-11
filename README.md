@@ -12,7 +12,7 @@ The roboclaw is driven by messages on `/cmd_vel`, which is of type `geometry_msg
 A `joystick_safety` node can also be launched. This subscribes to two topics: `/des_vel` (of type `geometry_msgs/Twist`) and `joy` of `sensor_msgs/joy`. It will use the joysticks state to publish messages to the `cmd_vel` topic. If the kill switch is active, it always publises zero speeds. If the arm switch is armed, based on whether the autonomous mode, or joy-stick mode is selected, the msgs could be from either `/des_vel` or computed from the joystick and max range. 
 
 
-## Jetson TX2 Ubuntu steup
+## Jetson TX2 Ubuntu setup
 Here's a good picture guide for the installation process. Steps repeated here for convenience. The official Linux support on Jetson TX2 is only for Ubuntu 18.04.
 
 1. Download the latest version of Nvidia’s SDK Manager on a PC running Ubuntu 18.04. I tried running this SDK on Ubuntu 20.04 laptop but it could not detect linux to be installed on Jetson TX2. THE SDK version used at time of writing this guide is 1.7.3.9053
