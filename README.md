@@ -48,4 +48,6 @@ export ROS_MASTER_URI=http://hardik-legion-s7.local:11311 (laptop)
 export ROS_HOSTNAME=hardik-legion-s7.local (laptop)
 ```
 
-
+## Additional Info
+For more info and joy stick guide, visit
+https://dev10110.github.io/tech-notes/research/setting-up-rovers.html
