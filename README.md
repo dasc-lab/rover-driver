@@ -30,3 +30,9 @@ After Ubuntu installation, simnply connect to Wifi and in its settings GUI, give
 
 ## Jetson TX2 ROS installation
 ROS GPG keys were changed 1.5 years ago and they released an offical notidication. However the offical installation guide never updated the instruction. So, when trying to install ROS, it shows GPG key error during `sudo apt update`, then follow the instructions at https://discourse.ros.org/t/new-gpg-keys-deployed-for-packages-ros-org/9454.
+
+## Required ROS packages
+After ROS installation, clone and build our repos
+https://github.com/dasc-lab/rover-driver
+
+
