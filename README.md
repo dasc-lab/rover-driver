@@ -55,3 +55,21 @@ You also need to change hostname in following two places otherwise the following
 ## Additional Info
 For more info and joy stick guide, visit
 https://dev10110.github.io/tech-notes/research/setting-up-rovers.html
+
+## USB Communication Setup
+For seamless communication with roverclaw, we need to give it permission to use the usb port. This can be done with
+```
+sudo chmod 666 /dev/ttyACM0
+```
+
+OR you can also do the following to avoid giving this permission everytime
+1. Run following two commands (required once and u should log out and log back in)
+ ```
+sudo adduser $USER dialout
+sudo adduser $USER tty
+```
+
+2. Remove modemmanager as it interferes with USB permission a lot
+```
+sudo apt-get remove modemmanager
+```
