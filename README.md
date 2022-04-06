@@ -19,9 +19,10 @@ Here's a good picture guide for the installation process. Steps repeated here fo
   https://developer.nvidia.com/nvidia-sdk-manager
 3. Connect the TX2 to your PC using the provided microUSB cable.
 4. Make sure the TX2 is powered off
-5. Connect a monitor, mouse, and keyboard to the Jetson. (The mouse is optional, but recommended. If you do not have an all-in-one mouse+keyboard you will need to use a small USB hub, as the Jetson TX2 only has a single USB port.)
+5. Connect a monitor, mouse, and keyboard to the Jetson. (The mouse is optional, but recommended. If you do not have an all-in-one mouse+keyboard you will need to use a small USB hub, as the Jetson TX2 only has a single USB port.). 
 6. Press and hold the REC button
-7. Press the power button. OR in our case just connect LiPo battery to the roverclaw board which powers the Jetson too.
+7. Press the power button. OR in our case just connect LiPo battery to the roverclaw board which powers the Jetson too. The steps are same if powered with barrel jack.
+8. Note: if SDK does not detect Jetson, then hit refresh. and connect to its micr USB without a hub and directly to your laptop's USB A(and not USB C).
 
 Then follow the steps in SDK. make sure to Choose the appropriate board and Linux version in Step 1. In Step 3, I used the Force Recovery method andf followed the instructions. Instead of power button, the Jetson just starts up automatically when Lipo power is passed on through the barrel jack. Therefore, whenever it says press power button, then just connect LiPo instead.
 
