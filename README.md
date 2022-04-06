@@ -73,3 +73,13 @@ sudo adduser $USER tty
 ```
 sudo apt-get remove modemmanager
 ```
+## Manual Control
+On ground control station:
+```
+rosrun joy joy_node
+```
+On Jetson:
+```
+rosrun joystick_safety joystick_safety_node
+roslaunch roboclaw_node roboclaw.launch
+```
